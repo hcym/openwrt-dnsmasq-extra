@@ -63,6 +63,7 @@ start_service() {
 	uci_bool_by_type $NAME cache && cat <<-EOF >>"/var/etc/${NAME}.conf"
 		cache-size 1024
 		cache-file /tmp/smartdns.cache
+		cache-checkpoint-time 600
 		serve-expired yes
 		prefetch-domain yes
 	EOF
@@ -75,6 +76,7 @@ start_service() {
 		rr-ttl-min 120
 		max-reply-ip-num 2
 		rr-ttl-reply-max 600
+		expand-ptr-from-address yes
 		response-mode $(uci_get_by_type $NAME response_mode)
 		speed-check-mode $(uci_get_by_type $NAME speed_check_mode)
 		$(
@@ -140,6 +142,7 @@ start_service() {
 		uci_bool_by_type $NAME cache && cat <<-EOF >>"/var/etc/${NAME}_cn.conf"
 			cache-size 2048
 			cache-file /tmp/smartdns_cn.cache
+			cache-checkpoint-time 600
 			serve-expired yes
 			prefetch-domain yes
 		EOF
@@ -152,6 +155,7 @@ start_service() {
 			rr-ttl-min 300
 			max-reply-ip-num 4
 			rr-ttl-reply-max 120
+			expand-ptr-from-address yes
 			response-mode $(uci_get_by_type $NAME response_mode)
 			speed-check-mode $(uci_get_by_type $NAME speed_check_mode)
 			$(
