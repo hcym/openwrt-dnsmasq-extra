@@ -593,6 +593,7 @@ dsxys.pro
 openwrt.pro
 cutout.pro
 yuedu.pro
+cubox.pro
 xbiquge.so
 oekaki.so
 pdm.so
