@@ -137,6 +137,7 @@ cat <<-EOF | tee -a adblock adblock.lite >/dev/null
 	api.msn.com
 	browser.events.data.msn.com
 EOF
+grep -v '^#' adblock.ext | sort -u | tee -a adblock adblock.lite >/dev/null
 
 echo >&2 "# adblock"
 time shadowsocks-helper tide -i adblock -o adblock
